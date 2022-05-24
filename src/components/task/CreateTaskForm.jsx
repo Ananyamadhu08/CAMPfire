@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Input from "../global/Input";
 import TextArea from "../global/TextArea";
+import TaskDropdown from "./TaskDropdown";
 
 export default function CreateTaskForm() {
   const [taskDetails, setTaskDetails] = useState({
@@ -11,11 +12,9 @@ export default function CreateTaskForm() {
     "long break": 10,
     "short break": 5,
     pomodoro: 30,
-    taskPriority: "none",
+    taskPriority: "",
     createdAt: "",
   });
-
-  console.log(taskDetails);
 
   return (
     <form style={{ height: "50vh", overflow: "scroll" }}>
@@ -111,18 +110,18 @@ export default function CreateTaskForm() {
         />
       </div>
 
-      <div className="custom-select m-3">
-        <select className="bg-slate-900 text-orange-100 text-xl">
-          <option selected disabled>
-            Choose a filter
-          </option>
-          <option value="">1</option>
-          <option value="">2</option>
-          <option value="">3</option>
-          <option value="">4</option>
-          <option value="">5</option>
-        </select>
-      </div>
+      <TaskDropdown
+        value={taskDetails.taskPriority}
+        onChange={(e) => {
+          const { name, value } = e.target;
+
+          setTaskDetails({ ...taskDetails, [name]: value });
+        }}
+        errorMessage={
+          taskDetails.taskPriority === "none" &&
+          "Please select the task priority"
+        }
+      />
 
       <button className="p-3 my-7 bg-slate-900 text-orange-100 w-full text-lg rounded-xl">
         create task
