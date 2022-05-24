@@ -1,89 +1,114 @@
-import React from "react";
+import React, { useState } from "react";
+
+import Input from "../global/Input";
+import TextArea from "../global/TextArea";
 
 export default function CreateTaskForm() {
+  const [taskDetails, setTaskDetails] = useState({
+    _id: null,
+    title: "",
+    description: "",
+    "long break": 10,
+    "short break": 5,
+    pomodoro: 30,
+    taskPriority: "none",
+    createdAt: "",
+  });
+
+  console.log(taskDetails);
+
   return (
     <form style={{ height: "50vh", overflow: "scroll" }}>
       <h2 className="mb-5">ADD NEW TASK</h2>
-      <div className="input-container mb-7">
-        <input
-          type="text"
-          id="email"
-          className="input input-orange-hover input-blue-focus"
-          autoComplete="off"
-          placeholder=" "
-        />
-        <label
-          htmlFor="email"
-          className="input-label text-slate-900 bg-orange-100"
-        >
-          task title
-        </label>
-      </div>
+      <Input
+        type={"text"}
+        value={taskDetails.title}
+        name="title"
+        onChange={(e) => {
+          const { name, value } = e.target;
+          setTaskDetails({ ...taskDetails, [name]: value });
+        }}
+        label={"task title"}
+        errorMessage={
+          taskDetails.title.length < 6
+            ? "title needs to be at least 6 characters long."
+            : ""
+        }
+        required
+      />
+      <div className="p-1"></div>
 
-      <div className="input-container mb-7" style={{ minHeight: "8rem" }}>
-        <textarea
-          type="text"
-          id="email"
-          className="input input-orange-hover input-blue-focus"
+      <div className="mb-7" style={{ minHeight: "8rem" }}>
+        <TextArea
+          label="task description"
+          value={taskDetails.description}
+          name="description"
           autoComplete="off"
           placeholder=" "
+          onChange={(e) => {
+            const { name, value } = e.target;
+
+            setTaskDetails({ ...taskDetails, [name]: value });
+          }}
+          errorMessage={
+            taskDetails.description.length < 10
+              ? "Description needs to be at least 10 characters long."
+              : ""
+          }
+          required
         />
-        <label
-          htmlFor="email"
-          className="input-label text-slate-900 bg-orange-100"
-        >
-          task description
-        </label>
       </div>
 
       <div className="modal-inputs">
-        <div className="input-container mb-7">
-          <input
-            type="number"
-            id="email"
-            className="input input-orange-hover input-blue-focus"
-            autoComplete="off"
-            placeholder=" "
-          />
-          <label
-            htmlFor="email"
-            className="input-label text-slate-900 bg-orange-100"
-          >
-            pomodoro
-          </label>
-        </div>
+        <Input
+          type={"number"}
+          value={taskDetails.pomodoro}
+          name="pomodoro"
+          onChange={(e) => {
+            const { name, value } = e.target;
 
-        <div className="input-container mb-7">
-          <input
-            type="number"
-            id="email"
-            className="input input-orange-hover input-blue-focus"
-            autoComplete="off"
-            placeholder=" "
-          />
-          <label
-            htmlFor="email"
-            className="input-label text-slate-900 bg-orange-100"
-          >
-            short break
-          </label>
-        </div>
+            setTaskDetails({ ...taskDetails, [name]: parseInt(value) });
+          }}
+          label={"pomodoro"}
+          errorMessage={
+            taskDetails.pomodoro <= 0 && "Pomodoro timer can't be zero or less"
+          }
+          required
+        />
 
-        <div className="input-container mb-7">
-          <input
-            type="number"
-            id="email"
-            className="input input-orange-hover input-blue-focus"
-            autoComplete="off"
-            placeholder=" "
-          />
-          <label
-            htmFor="email"
-            className="input-label text-slate-900 bg-orange-100"
-          >
-            long break
-          </label>
-        </div>
+        <Input
+          type={"number"}
+          value={taskDetails["short break"]}
+          name="short break"
+          onChange={(e) => {
+            const { name, value } = e.target;
+
+            setTaskDetails({ ...taskDetails, [name]: parseInt(value) });
+          }}
+          label={"short break"}
+          errorMessage={
+            taskDetails["short break"] > 15 &&
+            "Short break can't be more than 15"
+          }
+          required
+        />
+
+        <Input
+          type={"number"}
+          value={taskDetails["long break"]}
+          name="long break"
+          onChange={(e) => {
+            const { name, value } = e.target;
+
+            setTaskDetails({ ...taskDetails, [name]: parseInt(value) });
+          }}
+          label={"long break"}
+          errorMessage={
+            taskDetails["long break"] > 30 &&
+            "Short break can't be more than 30"
+          }
+          required
+        />
       </div>
 
       <div className="custom-select m-3">
@@ -105,5 +130,3 @@ export default function CreateTaskForm() {
     </form>
   );
 }
-
-// className="input input-orange-hover input-blue-focus"
