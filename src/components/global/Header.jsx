@@ -47,7 +47,7 @@ export default function Header() {
           <li>
             <Link
               className="text-orange-500 text-hover-orange-700 flex justify-center align-items-center "
-              to="/taskpage"
+              to="/tasks"
             >
               <i className="fa-solid fa-list-check mr-2"></i>
               Tasks

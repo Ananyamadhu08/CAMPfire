@@ -1,0 +1,28 @@
+.task-btn {
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  width: fit-content;
+}
+
+.task-card-description {
+  height: 3rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.task-page-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin: 2rem;
+}
+
+.task-list {
+  overflow-y: scroll;
+}
+
+.modal-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}

@@ -8,7 +8,7 @@ const App = () => {
   const { theme } = useTheme();
 
   return (
-    <div className={`${theme === "light" ? "bg-orange-100" : "bg-slate-900"}`}>
+    <div className={`${theme === "light" ? "bg-orange-200" : "bg-slate-900"}`}>
       <Header />
       <WebsiteRoutes />
       <Footer />
