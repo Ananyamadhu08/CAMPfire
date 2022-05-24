@@ -4,7 +4,7 @@
   width: fit-content;
 }
 
-.task-card-description {
+.task-card-title {
   height: 3rem;
   text-overflow: ellipsis;
   overflow: hidden;

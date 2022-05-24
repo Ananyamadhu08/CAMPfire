@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { taskActions } from "../../context/constants";
+import { useTasks } from "../../context/providers/TasksProvider";
 
 import Input from "../global/Input";
 import TextArea from "../global/TextArea";
 import TaskDropdown from "./TaskDropdown";
+import { v4 as uuidv4 } from "uuid";
 
-export default function CreateTaskForm() {
+export default function CreateTaskForm({ task }) {
   const [taskDetails, setTaskDetails] = useState({
     _id: null,
     title: "",
@@ -16,8 +19,130 @@ export default function CreateTaskForm() {
     createdAt: "",
   });
 
+  const { tasksDispatch } = useTasks();
+
+  useEffect(() => {
+    if (task) {
+      setTaskDetails({
+        ...task,
+        "long break": task["long break"] / 60,
+        "short break": task["short break"] / 60,
+        pomodoro: task.pomodoro / 60,
+      });
+    }
+  }, []);
+
+  const handleCreateTaskHandler = (e) => {
+    e.preventDefault();
+
+    if (taskDetails.title.length < 6)
+      return "Title needs to be at least 6 characters long.";
+
+    if (taskDetails.description.length < 10)
+      return "Description needs to be at least 10 characters long.";
+
+    if (taskDetails.pomodoro <= 0)
+      return "Pomodoro timer can't be zero or less";
+
+    if (taskDetails["long break"] > 30)
+      return "Long break can't be more than 30";
+
+    if (taskDetails["short break"] > 15)
+      return "Short break can't be more than 15";
+
+    if (taskDetails.taskPriority === "none")
+      return "Please select the task priority";
+
+    if (task) {
+      tasksDispatch({
+        type: taskActions.DELETE_TASK,
+        payload: {
+          ...taskDetails,
+          _id: task._id,
+          "long break": taskDetails["long break"] * 60,
+          "short break": taskDetails["short break"] * 60,
+          pomodoro: taskDetails.pomodoro * 60,
+          createdAt: new Date().toISOString(),
+        },
+      });
+    }
+
+    tasksDispatch({
+      type: taskActions.CREATE_TASK,
+      payload: {
+        ...taskDetails,
+        _id: uuidv4(),
+        "long break": taskDetails["long break"] * 60,
+        "short break": taskDetails["short break"] * 60,
+        pomodoro: taskDetails.pomodoro * 60,
+        createdAt: new Date().toISOString(),
+      },
+    });
+
+    setTaskDetails({
+      _id: null,
+      title: "",
+      description: "",
+      "long break": 10,
+      "short break": 5,
+      pomodoro: 30,
+      taskPriority: "none",
+      createdAt: "",
+    });
+  };
+
+  const handleUpdateTaskHandler = (e) => {
+    e.preventDefault();
+
+    if (taskDetails.title.length < 6)
+      return "0/6 \nTitle needs to be at least 6 characters long.";
+
+    if (taskDetails.description.length < 10)
+      return "0/10 \nDescription needs to be at least 10 characters long.";
+
+    if (taskDetails.pomodoro <= 0)
+      return "Pomodoro timer can't be zero or less";
+
+    if (taskDetails["long break"] > 30)
+      return "Long break can't be more than 30";
+
+    if (taskDetails["short break"] > 15)
+      return "Short break can't be more than 15";
+
+    if (taskDetails.taskPriority === "none")
+      return "Please select the task priority";
+
+    if (task) {
+      tasksDispatch({
+        type: taskActions.UPDATE_TASK,
+        payload: {
+          ...taskDetails,
+          _id: task._id,
+          "long break": taskDetails["long break"] * 60,
+          "short break": taskDetails["short break"] * 60,
+          pomodoro: taskDetails.pomodoro * 60,
+          createdAt: new Date().toISOString(),
+        },
+      });
+    }
+
+    setTaskDetails({
+      _id: null,
+      title: "",
+      description: "",
+      "long break": 10,
+      "short break": 5,
+      pomodoro: 30,
+      taskPriority: "none",
+      createdAt: "",
+    });
+  };
+
   return (
-    <form style={{ height: "50vh", overflow: "scroll" }}>
+    <form
+      style={{ height: "50vh", overflow: "scroll" }}
+      onSubmit={handleCreateTaskHandler}
+    >
       <h2 className="mb-5">ADD NEW TASK</h2>
       <Input
         type={"text"}
@@ -37,7 +162,7 @@ export default function CreateTaskForm() {
       />
       <div className="p-1"></div>
 
-      <div className="mb-7" style={{ minHeight: "8rem" }}>
+      <div className="mb-7 mt-4" style={{ minHeight: "8rem" }}>
         <TextArea
           label="task description"
           value={taskDetails.description}
@@ -123,8 +248,14 @@ export default function CreateTaskForm() {
         }
       />
 
-      <button className="p-3 my-7 bg-slate-900 text-orange-100 w-full text-lg rounded-xl">
-        create task
+      <button
+        className="p-3 my-7 bg-slate-900 text-orange-100 w-full text-lg rounded-xl"
+        type="submit"
+        onClick={(e) =>
+          task ? handleUpdateTaskHandler(e) : handleCreateTaskHandler(e)
+        }
+      >
+        {task ? "edit task" : "create task"}
       </button>
     </form>
   );

@@ -1,8 +1,14 @@
 import React from "react";
 import { useTheme } from "../../context";
+import moment from "moment";
+import { Link } from "react-router-dom";
+import { taskActions } from "../../context/constants";
+import { useTasks } from "../../context/providers/TasksProvider";
 
-export const TaskCard = () => {
+export const TaskCard = ({ task }) => {
   const { theme } = useTheme();
+  const { tasksDispatch } = useTasks();
+
   return (
     <div>
       <div
@@ -12,16 +18,13 @@ export const TaskCard = () => {
             : "bg-orange-200 text-slate-900"
         }`}
       >
-        <div className="flex justify-between">
-          <h3 className="task-card-description">
-            This is a taskThis This is a taskThis This is a taskThis This is a
-            taskThis This is a taskThis This is a taskThis This is a taskThis
-            This is a taskThis This is a taskThis This is a taskThis This is a
-            taskThis This is a taskThis
-          </h3>
-          <i className="fa-solid fa-pen-to-square text-xl"></i>
+        <h3 className="task-card-title">{task.title}</h3>
+
+        <div className="text-xs mt-3 mb-5">
+          <span className="text-grey-600">
+            {moment(task.createdAt).fromNow()}
+          </span>
         </div>
-        <div className="text-xs mt-3 mb-5">created at: 10/2/3</div>
 
         <div className="flex justify-between gap-7 mt-2">
           <button
@@ -31,9 +34,19 @@ export const TaskCard = () => {
                 : "text-orange-200 bg-slate-900"
             }`}
           >
-            start focusing
+            <Link to={`/tasks/${task._id}`}>Start Focusing</Link>
           </button>
-          <i className="fa-solid fa-trash-can text-xl relative"></i>
+          <i
+            onClick={() =>
+              tasksDispatch({
+                type: taskActions.DELETE_TASK,
+                payload: {
+                  ...task,
+                },
+              })
+            }
+            className="fa-solid fa-trash-can text-xl relative"
+          ></i>
         </div>
       </div>
     </div>
