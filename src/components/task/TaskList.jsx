@@ -1,6 +1,6 @@
 import React from "react";
-import { useTheme } from "../../context";
-import { useTasks } from "../../context/providers/TasksProvider";
+import { useTasks, useTheme } from "../../context";
+
 import { TaskCard } from "./TaskCard";
 
 export default function TaskList({ category }) {
