@@ -21,7 +21,7 @@ export default function Timer() {
           text={percentage}
           styles={buildStyles({
             pathTransitionDuration: 0.5,
-            // pathColor: "var(--accent-color)",
+            pathColor: "var(--blue)",
             textColor: `${theme === "light" ? "black" : "white"}`,
             // fontFamily: "var(--font-current)",
             // trailColor: "none"

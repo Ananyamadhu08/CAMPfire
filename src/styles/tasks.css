@@ -28,7 +28,7 @@
 }
 
 .bg-sky-blue {
-  background-color: var(--sky-blue);
+  background-color: var(--blue);
 }
 
 .bg-purple {
@@ -36,5 +36,5 @@
 }
 
 .bg-crimson {
-  background-color: var(--crimson);
+  background-color: var(--red);
 }
