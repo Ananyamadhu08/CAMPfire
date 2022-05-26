@@ -26,3 +26,15 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
 }
+
+.bg-sky-blue {
+  background-color: var(--sky-blue);
+}
+
+.bg-purple {
+  background-color: var(--purple);
+}
+
+.bg-crimson {
+  background-color: var(--crimson);
+}
