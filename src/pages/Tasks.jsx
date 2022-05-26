@@ -45,7 +45,7 @@ export default function Tasks() {
       <Modal
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        modalBody={<CreateTaskForm />}
+        modalBody={<CreateTaskForm setIsOpen={setIsOpen} />}
       />
     </>
   );

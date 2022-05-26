@@ -1,9 +1,8 @@
 import React from "react";
-import { useTheme } from "../../context";
+import { useTasks, useTheme } from "../../context";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { taskActions } from "../../context/constants";
-import { useTasks } from "../../context/providers/TasksProvider";
 
 export const TaskCard = ({ task }) => {
   const { theme } = useTheme();

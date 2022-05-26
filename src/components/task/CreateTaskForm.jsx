@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { taskActions } from "../../context/constants";
-import { useTasks } from "../../context/providers/TasksProvider";
-
 import Input from "../global/Input";
 import TextArea from "../global/TextArea";
 import TaskDropdown from "./TaskDropdown";
 import { v4 as uuidv4 } from "uuid";
+import { useTasks } from "../../context";
 
-export default function CreateTaskForm({ task }) {
+export default function CreateTaskForm({ task, setIsOpen }) {
   const [taskDetails, setTaskDetails] = useState({
     _id: null,
     title: "",
@@ -89,6 +88,8 @@ export default function CreateTaskForm({ task }) {
       taskPriority: "none",
       createdAt: "",
     });
+
+    setIsOpen(false);
   };
 
   const handleUpdateTaskHandler = (e) => {
@@ -136,6 +137,8 @@ export default function CreateTaskForm({ task }) {
       taskPriority: "none",
       createdAt: "",
     });
+
+    setIsOpen(false);
   };
 
   return (
