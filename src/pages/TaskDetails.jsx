@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import { Modal, TaskControls, TaskSettings, Timer } from "../components";
+import { useParams } from "react-router-dom";
+import { CreateTaskForm, Modal, TaskControls, Timer } from "../components";
 
-import { useTheme } from "../context";
+import { useTasks, useTheme } from "../context";
 
 export default function TaskDetails() {
-  const { theme } = useTheme();
+  const { taskId } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const {
+    tasksState: { tasks },
+  } = useTasks();
+
+  let task = tasks.find((item) => item._id === taskId);
+
+  const { theme } = useTheme();
 
   return (
     <div className="p-2 flex flex-col align-items-center">
@@ -38,7 +47,7 @@ export default function TaskDetails() {
       <Modal
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
-        modalBody={<TaskSettings />}
+        modalBody={<CreateTaskForm setIsOpen={setIsModalOpen} task={task} />}
       />
     </div>
   );

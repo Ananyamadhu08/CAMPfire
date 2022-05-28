@@ -8,7 +8,7 @@ export default function TaskControls() {
       className={`flex flex-wrap gap-3 p-3 rounded-3xl justify-around mb-12 ${
         theme === "light"
           ? "bg-slate-900 text-slate-900"
-          : "bg-orange-100 text-orange-100"
+          : "bg-orange-200 text-orange-100"
       }`}
     >
       <div

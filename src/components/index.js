@@ -5,5 +5,4 @@ export { default as Input } from "./global/Input";
 export { default as TaskList } from "./task/TaskList";
 export { default as CreateTaskForm } from "./task/CreateTaskForm";
 export { default as TaskControls } from "./task-details/TaskControls";
-export { default as TaskSettings } from "./task-details/TaskSettings";
 export { default as Timer } from "./task-details/Timer";
