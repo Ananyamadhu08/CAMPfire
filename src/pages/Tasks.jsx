@@ -16,7 +16,7 @@ export default function Tasks() {
           <button
             onClick={() => setIsOpen(true)}
             id="modal-btn"
-            className={`p-4 text-3xl task-btn m-auto text-center open-modal-btn ${
+            className={`p-4 cursor-pointer text-3xl task-btn m-auto text-center open-modal-btn ${
               theme === "light"
                 ? "bg-slate-900 text-orange-200"
                 : "bg-orange-200 text-slate-900"

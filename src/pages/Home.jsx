@@ -28,7 +28,7 @@ export default function Home() {
           </p>
 
           <div
-            className={`homepage-links ${
+            className={`homepage-links cursor-pointer ${
               theme === "light"
                 ? "bg-slate-900 text-orange-200 bg-hover-slate-700"
                 : "bg-orange-200 text-slate-900 bg-hover-orange-400"

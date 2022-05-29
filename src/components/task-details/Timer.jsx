@@ -1,35 +1,49 @@
 import React from "react";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import {
+  CircularProgressbarWithChildren,
+  buildStyles,
+} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useTasks, useTheme } from "../../context";
 
-export default function Timer() {
+export default function Timer({ timer, time }) {
   const { theme } = useTheme();
   const { pathColor } = useTasks();
 
-  const percentage = "66%";
+  const formatTimeLeft = (seconds) => {
+    return `${Math.floor(seconds / 60)} : ${
+      seconds % 60 > 9 ? seconds % 60 : "0" + (seconds % 60)
+    }`;
+  };
 
   return (
-    <div className="timer" style={{ maxWidth: "20rem" }}>
+    <div className="timer" style={{ maxWidth: "25rem" }}>
       <div
         className={`timer-display p-5 ${
           theme === "light" ? "bg-orange-200" : "bg-slate-900"
         }`}
       >
-        <CircularProgressbar
-          value={percentage}
+        <CircularProgressbarWithChildren
+          value={timer}
           strokeWidth={6}
-          text={percentage}
+          maxValue={time}
+          minValue={0}
+          counterClockwise={"true"}
           styles={buildStyles({
             pathTransitionDuration: 0.5,
             pathColor: `${pathColor}`,
-            textColor: `${theme === "light" ? "black" : "white"}`,
-            // fontFamily: "var(--font-current)",
-            // trailColor: "none"
+            textSize: "30px",
           })}
         >
-          {percentage}
-        </CircularProgressbar>
+          <div
+            className={`text-6xl ${
+              theme === "light" ? "text-slate-900" : "text-orange-200"
+            }`}
+          >
+            {" "}
+            {formatTimeLeft(timer)}
+          </div>
+        </CircularProgressbarWithChildren>
       </div>
     </div>
   );

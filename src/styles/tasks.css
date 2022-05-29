@@ -38,3 +38,12 @@
 .bg-crimson {
   background-color: var(--red);
 }
+
+.task-info-box {
+  min-width: 25rem;
+  max-width: 30rem;
+  border: 1px solid black;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 1rem;
+}
