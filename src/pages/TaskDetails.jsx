@@ -16,17 +16,28 @@ export default function TaskDetails() {
 
   const { theme } = useTheme();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [controlTab, setControlTab] = useState("pomodoro");
-
   const {
     tasksState: { tasks },
   } = useTasks();
 
   let task = tasks.find((item) => item._id === taskId);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [controlTab, setControlTab] = useState("pomodoro");
   const [time, setTime] = useState(task.pomodoro);
   const [timer, setTimer] = useState(time);
+  const [play, setPlay] = useState(false);
+
+  useEffect(() => {
+    if (play) {
+      let intervalId = setInterval(() => {
+        if (timer > 0) {
+          setTimer((timer) => timer - 1);
+        }
+      }, 1000);
+      return () => clearInterval(intervalId);
+    }
+  }, [timer, play]);
 
   useEffect(() => {
     switch (controlTab) {
@@ -64,7 +75,11 @@ export default function TaskDetails() {
           title={task.title}
           description={task.description}
         />
-        <TaskControls controlTab={controlTab} setControlTab={setControlTab} />
+        <TaskControls
+          play={play}
+          setPlay={setPlay}
+          setControlTab={setControlTab}
+        />
 
         <Timer timer={timer} time={time} />
 
@@ -73,8 +88,21 @@ export default function TaskDetails() {
             theme === "light" ? "text-slate-900" : "text-orange-200"
           } `}
         >
-          <i className="fa-solid fa-play"></i>
-          <i className="fa-solid fa-arrow-rotate-left"></i>
+          {play ? (
+            <i
+              onClick={() => setPlay(!play)}
+              className="fa-solid fa-pause cursor-pointer"
+            ></i>
+          ) : (
+            <i
+              onClick={() => setPlay(!play)}
+              className="fa-solid fa-play cursor-pointer"
+            ></i>
+          )}
+          <i
+            onClick={() => setTimer(time)}
+            className="fa-solid fa-arrow-rotate-left cursor-pointer"
+          ></i>
         </div>
       </div>
 

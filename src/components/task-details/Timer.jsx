@@ -33,6 +33,7 @@ export default function Timer({ timer, time }) {
             pathTransitionDuration: 0.5,
             pathColor: `${pathColor}`,
             textSize: "30px",
+            trailColor: `${theme === "light" ? "#0f172a" : "#fed7aa"}`,
           })}
         >
           <div

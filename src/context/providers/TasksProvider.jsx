@@ -18,13 +18,22 @@ export const TasksProvider = ({ children }) => {
 
   const [pathColor, setPathColor] = useState("blue");
 
+  // const [trailColor, setTrailColor] = useState("");
+
   useEffect(() => {
     localStorage.setItem("campFireTasks", JSON.stringify(tasksState.tasks));
   }, [tasksState.tasks]);
 
   return (
     <TasksContext.Provider
-      value={{ tasksState, tasksDispatch, pathColor, setPathColor }}
+      value={{
+        tasksState,
+        tasksDispatch,
+        pathColor,
+        setPathColor,
+        // trailColor,
+        // setTrailColor,
+      }}
     >
       {children}
     </TasksContext.Provider>

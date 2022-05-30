@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useTheme } from "../context";
 
 export default function Home() {
@@ -18,7 +19,7 @@ export default function Home() {
       <div className="col-12-xs col-7-lg text-orange-200 p-2 text-5xl flex justify-center align-items-center p-5 mb-10">
         <div className="m-6">
           <p
-            className={`mt-12 mb-14 ${
+            className={`mb-14 ${
               theme === "light" ? "text-slate-900" : "text-orange-200"
             }`}
           >
@@ -27,16 +28,17 @@ export default function Home() {
             app to help increase your productivity
           </p>
 
-          <div
+          <Link
             className={`homepage-links cursor-pointer ${
               theme === "light"
-                ? "bg-slate-900 text-orange-200 bg-hover-slate-700"
+                ? "bg-slate-900 text-orange-200 bg-hover-slate-800"
                 : "bg-orange-200 text-slate-900 bg-hover-orange-400"
             }  `}
+            to="/tasks"
           >
             <i className="fa-solid fa-clock mr-7"></i>
             START FOCUSING
-          </div>
+          </Link>
         </div>
       </div>
     </div>
