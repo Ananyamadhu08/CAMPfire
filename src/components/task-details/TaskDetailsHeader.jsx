@@ -5,7 +5,7 @@ function TaskDetailsHeader({ title, description, setIsModalOpen }) {
   const { theme } = useTheme();
   return (
     <div
-      className={`task-info-box  ${
+      className={`task-info-box mb-5  ${
         theme === "light"
           ? "bg-slate-900 text-orange-200"
           : "text-slate-900 bg-orange-200"

@@ -17,7 +17,7 @@ export default function Timer({ timer, time }) {
   };
 
   return (
-    <div className="timer" style={{ maxWidth: "25rem" }}>
+    <div className="timer" style={{ maxWidth: "22rem" }}>
       <div
         className={`timer-display p-5 ${
           theme === "light" ? "bg-orange-200" : "bg-slate-900"

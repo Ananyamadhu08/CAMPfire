@@ -50,13 +50,8 @@ export default function TaskDetails() {
   return (
     <div>
       <div className="p-2 flex flex-col align-items-center mt-1">
-        <TaskDetailsHeader
-          setIsModalOpen={setIsModalOpen}
-          title={task.title}
-          description={task.description}
-        />
         <h3
-          className={`mb-4 mt-8 px-5 py-2 rounded-lg ${
+          className={`mt-3 mb-5 px-5 py-2 rounded-lg text-xl ${
             theme === "light"
               ? "bg-slate-900 text-orange-200"
               : "bg-orange-200 text-slate-900"
@@ -64,6 +59,11 @@ export default function TaskDetails() {
         >
           {controlTab}
         </h3>
+        <TaskDetailsHeader
+          setIsModalOpen={setIsModalOpen}
+          title={task.title}
+          description={task.description}
+        />
         <TaskControls controlTab={controlTab} setControlTab={setControlTab} />
 
         <Timer timer={timer} time={time} />
