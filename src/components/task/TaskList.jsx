@@ -11,17 +11,19 @@ export default function TaskList({ category }) {
     <div className="mt-7">
       <h3
         className={`text-center mb-10 pb-3 ${
-          theme === "light" ? "text-slate-900" : "text-orange-100"
+          theme === "light" ? "text-slate-900" : "text-orange-200"
         } `}
         style={{
           borderBottom: `${
-            theme === "light" ? "3px dotted black" : "3px dotted white"
+            theme === "light"
+              ? "4px dotted var(--slate-900)"
+              : "4px dotted var(--orange-200)"
           }`,
         }}
       >
         {category}
       </h3>
-      <ul className="task-list" style={{ height: "89vh" }}>
+      <ul className="task-list" style={{ height: "85vh" }}>
         {tasksState.tasks &&
           tasksState.tasks.map(
             (task) =>
@@ -29,18 +31,6 @@ export default function TaskList({ category }) {
                 <TaskCard key={task._id} task={task} />
               )
           )}
-
-        {!tasksState.tasks.length && (
-          <h4
-            className={
-              theme === "light"
-                ? "text-black text-center"
-                : "text-white text-center"
-            }
-          >
-            Please add tasks to start focusing
-          </h4>
-        )}
       </ul>
     </div>
   );
