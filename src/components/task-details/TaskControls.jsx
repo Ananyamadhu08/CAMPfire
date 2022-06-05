@@ -18,7 +18,7 @@ export default function TaskControls({ play, setPlay, setControlTab }) {
         }`}
         onClick={() => {
           setControlTab("pomodoro");
-          if (play === true) {
+          if (play) {
             setPlay(false);
           }
         }}
@@ -32,7 +32,7 @@ export default function TaskControls({ play, setPlay, setControlTab }) {
         }`}
         onClick={() => {
           setControlTab("short break");
-          if (play === true) {
+          if (play) {
             setPlay(false);
           }
         }}
@@ -46,7 +46,7 @@ export default function TaskControls({ play, setPlay, setControlTab }) {
         }`}
         onClick={() => {
           setControlTab("long break");
-          if (play === true) {
+          if (play) {
             setPlay(false);
           }
         }}
