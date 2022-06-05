@@ -1,9 +1,8 @@
 import React from "react";
-import { useTheme } from "../../context";
+import { useTasks, useTheme } from "../../context";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { taskActions } from "../../context/constants";
-import { useTasks } from "../../context/providers/TasksProvider";
 
 export const TaskCard = ({ task }) => {
   const { theme } = useTheme();
@@ -20,7 +19,7 @@ export const TaskCard = ({ task }) => {
       >
         <h3 className="task-card-title">{task.title}</h3>
 
-        <div className="text-xs mt-3 mb-5">
+        <div className="text-xs mb-5">
           <span className="text-grey-600">
             {moment(task.createdAt).fromNow()}
           </span>
@@ -28,7 +27,7 @@ export const TaskCard = ({ task }) => {
 
         <div className="flex justify-between gap-7 mt-2">
           <button
-            className={`rounded-lg py-1 px-2 text-md ${
+            className={`rounded-lg py-1 px-2 text-md no-border ${
               theme === "light"
                 ? "bg-orange-200 text-slate-900"
                 : "text-orange-200 bg-slate-900"

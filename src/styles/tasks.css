@@ -26,3 +26,23 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
 }
+
+.bg-sky-blue {
+  background-color: var(--blue);
+}
+
+.bg-purple {
+  background-color: var(--purple);
+}
+
+.bg-crimson {
+  background-color: var(--red);
+}
+
+.task-info-box {
+  min-width: 25rem;
+  max-width: 30rem;
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 1rem;
+}

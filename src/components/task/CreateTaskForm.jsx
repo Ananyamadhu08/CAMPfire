@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { taskActions } from "../../context/constants";
-import { useTasks } from "../../context/providers/TasksProvider";
-
 import Input from "../global/Input";
 import TextArea from "../global/TextArea";
 import TaskDropdown from "./TaskDropdown";
 import { v4 as uuidv4 } from "uuid";
+import { useTasks } from "../../context";
 
-export default function CreateTaskForm({ task }) {
+export default function CreateTaskForm({ task, setIsOpen }) {
   const [taskDetails, setTaskDetails] = useState({
     _id: null,
     title: "",
@@ -19,7 +18,7 @@ export default function CreateTaskForm({ task }) {
     createdAt: "",
   });
 
-  const { tasksDispatch } = useTasks();
+  const { tasksDispatch, setPathColor } = useTasks();
 
   useEffect(() => {
     if (task) {
@@ -89,6 +88,8 @@ export default function CreateTaskForm({ task }) {
       taskPriority: "none",
       createdAt: "",
     });
+
+    setIsOpen(false);
   };
 
   const handleUpdateTaskHandler = (e) => {
@@ -136,6 +137,8 @@ export default function CreateTaskForm({ task }) {
       taskPriority: "none",
       createdAt: "",
     });
+
+    setIsOpen(false);
   };
 
   return (
@@ -161,7 +164,6 @@ export default function CreateTaskForm({ task }) {
         required
       />
       <div className="p-1"></div>
-
       <div className="mb-7 mt-4" style={{ minHeight: "8rem" }}>
         <TextArea
           label="task description"
@@ -182,7 +184,6 @@ export default function CreateTaskForm({ task }) {
           required
         />
       </div>
-
       <div className="modal-inputs">
         <Input
           type={"number"}
@@ -234,7 +235,6 @@ export default function CreateTaskForm({ task }) {
           required
         />
       </div>
-
       <TaskDropdown
         value={taskDetails.taskPriority}
         onChange={(e) => {
@@ -247,6 +247,29 @@ export default function CreateTaskForm({ task }) {
           "Please select the task priority"
         }
       />
+
+      {task && (
+        <>
+          <div className="p-3"></div>
+          <div>
+            <h3 className="mb-5">COLOR</h3>
+            <div className="flex gap-5">
+              <div
+                className="bg-sky-blue w-16 h-16 rounded-full"
+                onClick={() => setPathColor("blue")}
+              ></div>
+              <div
+                className="bg-purple w-16 h-16 rounded-full"
+                onClick={() => setPathColor("purple")}
+              ></div>
+              <div
+                className="bg-crimson w-16 h-16 rounded-full"
+                onClick={() => setPathColor("red")}
+              ></div>
+            </div>
+          </div>
+        </>
+      )}
 
       <button
         className="p-3 my-7 bg-slate-900 text-orange-100 w-full text-lg rounded-xl"
