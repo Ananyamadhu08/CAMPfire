@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useTheme } from "../../context";
+import { useAuth, useTheme } from "../../context";
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
+  const { setAuthenticated } = useAuth();
 
   return (
     <div className="App">
@@ -64,6 +65,14 @@ export default function Header() {
               <i className="fab fa-github mr-2"></i>
               Github
             </a>
+          </li>
+          <li>
+            <button
+              className="btn btn-square-solid btn-md bg-orange-500 text-slate-900"
+              onClick={() => setAuthenticated(false)}
+            >
+              Logout
+            </button>
           </li>
         </ul>
 
