@@ -1,17 +1,31 @@
 import React from "react";
 import { Footer, Header } from "./components";
-import { useTheme } from "./context";
+import { useAuth, useTheme } from "./context";
+import { ToastContainer } from "react-toastify";
 
 import { WebsiteRoutes } from "./routes";
 
 const App = () => {
   const { theme } = useTheme();
+  const { authenticated } = useAuth();
 
   return (
     <div className={`${theme === "light" ? "bg-orange-200" : "bg-slate-900"}`}>
-      <Header />
+      <ToastContainer
+        theme={theme === "light" ? "light" : "dark"}
+        position="bottom-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        draggable
+        pauseOnHover
+      />
+
+      {authenticated && <Header />}
       <WebsiteRoutes />
-      <Footer />
+      {authenticated && <Footer />}
     </div>
   );
 };
