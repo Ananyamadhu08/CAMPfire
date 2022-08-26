@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useTheme } from "../../context";
+import { useAuth, useTheme } from "../../context";
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
+  const { setAuthenticated } = useAuth();
 
   return (
     <div className="App">
@@ -17,7 +18,7 @@ export default function Header() {
         <Link to="/" className="text-red-500 flex align-items-center gap-2">
           <i className="fa-solid fa-fire text-4xl "></i>
           <h2 className="text-3xl">
-            <span className="text-orange-500 text-4xl">CAMP</span>fire
+            <span className="text-orange-600 text-4xl">CAMP</span>fire
           </h2>
         </Link>
 
@@ -35,7 +36,7 @@ export default function Header() {
                   setTheme("light");
                 }
               }}
-              className="theme-btn text-3xl w-full text-orange-500 mr-10 text-hover-orange-700"
+              className="theme-btn text-3xl w-full text-orange-600 mr-10 text-hover-orange-700"
             >
               {theme === "light" ? (
                 <i className="fa-solid fa-moon"></i>
@@ -46,7 +47,7 @@ export default function Header() {
           </li>
           <li>
             <Link
-              className="text-orange-500 text-hover-orange-700 flex justify-center align-items-center "
+              className="text-orange-600 text-hover-orange-700 flex justify-center align-items-center "
               to="/tasks"
             >
               <i className="fa-solid fa-list-check mr-2"></i>
@@ -56,7 +57,7 @@ export default function Header() {
 
           <li>
             <a
-              className="text-orange-500 text-hover-orange-700 flex justify-center align-items-center"
+              className="text-orange-600 text-hover-orange-700 flex justify-center align-items-center"
               href="https://github.com/Ananyamadhu08/fusion"
               target="_blank"
               rel="noreferrer"
@@ -65,12 +66,20 @@ export default function Header() {
               Github
             </a>
           </li>
+          <li>
+            <button
+              className="btn btn-square-solid btn-md bg-orange-600 text-slate-900"
+              onClick={() => setAuthenticated(false)}
+            >
+              Logout
+            </button>
+          </li>
         </ul>
 
         <label htmlFor="top-nav-toggle" className="icon-burger">
-          <div className="line bg-orange-500"></div>
-          <div className="line bg-orange-500"></div>
-          <div className="line bg-orange-500"></div>
+          <div className="line bg-orange-600"></div>
+          <div className="line bg-orange-600"></div>
+          <div className="line bg-orange-600"></div>
         </label>
       </nav>
     </div>

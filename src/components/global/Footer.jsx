@@ -45,7 +45,7 @@ export default function Footer() {
         </div>
 
         <div
-          className={`mt-5 ${
+          className={`mt-2 ${
             theme === "light" ? "text-orange-100" : "text-slate-900"
           }`}
         >
@@ -54,7 +54,9 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
             href="https://fusion-css.netlify.app/"
-            className="text-hover-red-800"
+            className={`text-hover-red-800 ${
+              theme === "light" ? "text-orange-100" : "text-slate-900"
+            }`}
           >
             FusionCSS
           </a>
