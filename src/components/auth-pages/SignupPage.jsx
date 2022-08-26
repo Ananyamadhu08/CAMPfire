@@ -40,6 +40,39 @@ function SignupPage() {
     }
   };
 
+  // const signupWithTestCredentials = () => {
+  //   setUserData({
+  //     firstName: "john",
+  //     lastName: "doe",
+  //     email: "john@gmail.com",
+  //     password: "password",
+  //   });
+
+  //   submitHandler();
+  // };
+
+  const signupWithTestCredentials = () => {
+    const signupCredentials = {
+      firstName: "john",
+      lastName: "doe",
+      email: "john@gmail.com",
+      password: "password",
+    };
+
+    const foundUser = userDB.find((i) => i.email === signupCredentials.email);
+
+    if (foundUser) {
+      showToast("oops the user already exists", "error");
+    }
+
+    if (!foundUser) {
+      showToast("signup successful", "success");
+      setUserDB([...userDB, signupCredentials]);
+      localStorage.setItem("usersInfo", JSON.stringify(userDB));
+      navigate("/");
+    }
+  };
+
   return (
     <main className="h-screen flex justify-center  align-items-center bg-slate-900">
       <div>
@@ -135,13 +168,23 @@ function SignupPage() {
             </Link>
           </div>
 
-          <button
-            className="px-8 py-2 text-lg bg-slate-900 rounded text-orange-200 w-full bg-hover-slate-800"
-            style={{ border: "none" }}
-            onClick={() => submitHandler()}
-          >
-            signup
-          </button>
+          <div className="flex flex-col gap-4">
+            <button
+              className="px-8 py-2 text-lg bg-slate-900 rounded text-orange-200 w-full bg-hover-slate-800"
+              style={{ border: "none" }}
+              onClick={() => signupWithTestCredentials()}
+            >
+              signup with test credentials
+            </button>
+
+            <button
+              className="px-8 py-2 text-lg bg-slate-900 rounded text-orange-200 w-full bg-hover-slate-800"
+              style={{ border: "none" }}
+              onClick={() => submitHandler()}
+            >
+              signup
+            </button>
+          </div>
         </div>
       </div>
     </main>
