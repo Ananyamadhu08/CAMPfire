@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context";
+import { useToast } from "../../hooks/useToast";
+import { useNavigate } from "react-router-dom";
 
 const initialSignupState = {
   firstName: "",
@@ -13,6 +15,10 @@ function SignupPage() {
   const [userData, setUserData] = useState(initialSignupState);
   const { userDB, setUserDB } = useAuth();
 
+  const { showToast } = useToast();
+
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -20,13 +26,17 @@ function SignupPage() {
   };
 
   const submitHandler = () => {
-    const foundUser = userDB.find((i) => i === userData);
+    const foundUser = userDB.find((i) => i.email === userData.email);
 
-    if (foundUser) console.log("oops the user already exists");
+    if (foundUser) {
+      showToast("oops the user already exists", "error");
+    }
 
     if (!foundUser) {
+      showToast("signup successful", "success");
       setUserDB([...userDB, userData]);
       localStorage.setItem("usersInfo", JSON.stringify(userDB));
+      navigate("/");
     }
   };
 
@@ -43,7 +53,7 @@ function SignupPage() {
               name="firstName"
               type="text"
               id="first name"
-              className="input input-white-hover input-black-focus text-slate-900"
+              className="input input-white-hover input-black-focus text-white text-lg"
               autoComplete="off"
               placeholder=" "
               onChange={handleChange}
@@ -61,7 +71,7 @@ function SignupPage() {
               name="lastName"
               type="text"
               id="last name"
-              className="input input-white-hover input-black-focus text-slate-900"
+              className="input input-white-hover input-black-focus text-white text-lg"
               autoComplete="off"
               placeholder=" "
               onChange={handleChange}
@@ -79,7 +89,7 @@ function SignupPage() {
               name="email"
               type="text"
               id="email"
-              className="input input-white-hover input-black-focus text-slate-900"
+              className="input input-white-hover input-black-focus text-white text-lg"
               autoComplete="off"
               placeholder=" "
               onChange={handleChange}
@@ -97,7 +107,7 @@ function SignupPage() {
               name="password"
               type="password"
               id="password"
-              className="input input-white-hover input-black-focus text-slate-900"
+              className="input input-white-hover input-black-focus text-white text-lg"
               autoComplete="off"
               placeholder=" "
               onChange={handleChange}
@@ -118,7 +128,7 @@ function SignupPage() {
               Forgot Password
             </Link>
             <Link
-              to="/login"
+              to="/"
               className="text-underline text-slate-900 text-hover-orange-200"
             >
               Login
