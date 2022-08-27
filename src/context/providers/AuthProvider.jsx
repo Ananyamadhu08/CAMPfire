@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import { createContext, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const navigate = useNavigate();
+
   const [userDB, setUserDB] = useState(
     JSON.parse(localStorage.getItem("usersInfo")) || []
   );
@@ -18,6 +21,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("authenticated", JSON.stringify(authenticated));
+    navigate("/");
   }, [authenticated]);
 
   return (

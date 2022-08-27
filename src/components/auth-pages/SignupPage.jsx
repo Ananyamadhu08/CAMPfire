@@ -40,17 +40,6 @@ function SignupPage() {
     }
   };
 
-  // const signupWithTestCredentials = () => {
-  //   setUserData({
-  //     firstName: "john",
-  //     lastName: "doe",
-  //     email: "john@gmail.com",
-  //     password: "password",
-  //   });
-
-  //   submitHandler();
-  // };
-
   const signupWithTestCredentials = () => {
     const signupCredentials = {
       firstName: "john",
@@ -170,7 +159,7 @@ function SignupPage() {
 
           <div className="flex flex-col gap-4">
             <button
-              className="px-8 py-2 text-lg bg-slate-900 rounded text-orange-200 w-full bg-hover-slate-800"
+              className="px-8 py-2 text-lg bg-slate-900 rounded text-orange-200 w-full bg-hover-slate-800 cursor-pointer"
               style={{ border: "none" }}
               onClick={() => signupWithTestCredentials()}
             >
@@ -178,7 +167,7 @@ function SignupPage() {
             </button>
 
             <button
-              className="px-8 py-2 text-lg bg-slate-900 rounded text-orange-200 w-full bg-hover-slate-800"
+              className="px-8 py-2 text-lg bg-slate-900 rounded text-orange-200 w-full bg-hover-slate-800 cursor-pointer"
               style={{ border: "none" }}
               onClick={() => submitHandler()}
             >
