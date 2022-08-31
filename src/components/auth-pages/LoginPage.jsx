@@ -10,7 +10,7 @@ const intialLoginState = {
 
 function LoginPage() {
   const [userData, setUserData] = useState(intialLoginState);
-  const { userDB, setAuthenticated } = useAuth();
+  const { userDB, setUserDB, setAuthenticated } = useAuth();
 
   const { showToast } = useToast();
 
@@ -33,6 +33,41 @@ function LoginPage() {
     if (!foundUser) showToast("Invalid Login", "error");
   };
 
+  const loginWithTestCredentials = () => {
+    const loginCredentials = {
+      email: "john@gmail.com",
+      password: "password",
+    };
+
+    const signupCredentials = {
+      firstName: "john",
+      lastName: "doe",
+      email: "john@gmail.com",
+      password: "password",
+    };
+
+    const foundUser = userDB.find(
+      (i) =>
+        i.email === loginCredentials.email &&
+        i.password === loginCredentials.password
+    );
+
+    if (foundUser) {
+      showToast("Login Successful", "success");
+      setAuthenticated(true);
+      localStorage.setItem("authenticated", true);
+    }
+
+    if (!foundUser) {
+      setUserDB([...userDB, signupCredentials]);
+      localStorage.setItem("usersInfo", JSON.stringify(userDB));
+
+      showToast("Login Successful", "success");
+      setAuthenticated(true);
+      localStorage.setItem("authenticated", true);
+    }
+  };
+
   return (
     <main className="h-screen flex justify-center  align-items-center bg-slate-900">
       <div>
@@ -46,7 +81,7 @@ function LoginPage() {
               name="email"
               type="text"
               id="email"
-              className="input input-white-hover input-black-focus text-slate-900"
+              className="input input-white-hover input-black-focus text-white text-lg"
               autoComplete="off"
               placeholder=" "
               onChange={handleChange}
@@ -64,7 +99,7 @@ function LoginPage() {
               name="password"
               type="password"
               id="password"
-              className="input input-white-hover input-black-focus text-slate-900"
+              className="input input-white-hover input-black-focus text-white text-lg"
               autoComplete="off"
               placeholder=" "
               onChange={handleChange}
@@ -92,13 +127,23 @@ function LoginPage() {
             </Link>
           </div>
 
-          <button
-            className="px-8 py-2 text-lg bg-slate-900 rounded text-orange-200 w-full bg-hover-slate-800"
-            style={{ border: "none" }}
-            onClick={submitHandler}
-          >
-            login
-          </button>
+          <div className="flex flex-col gap-4">
+            <button
+              className="px-8 py-2 text-lg bg-slate-900 rounded text-orange-200 w-full bg-hover-slate-800 cursor-pointer"
+              style={{ border: "none" }}
+              onClick={() => loginWithTestCredentials()}
+            >
+              login with test credentials
+            </button>
+
+            <button
+              className="px-8 py-2 text-lg bg-slate-900 rounded text-orange-200 w-full bg-hover-slate-800 cursor-pointer"
+              style={{ border: "none" }}
+              onClick={() => submitHandler()}
+            >
+              login
+            </button>
+          </div>
         </div>
       </div>
     </main>
