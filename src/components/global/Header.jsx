@@ -11,7 +11,7 @@ export default function Header() {
       <nav
         style={{ position: "relative" }}
         className={`top-nav flex align-items-center justify-between ${
-          theme === "light" ? "bg-slate-900" : "bg-orange-200"
+          theme === "light" ? "bg-slate-900" : "bg-orange-100"
         }`}
       >
         <input id="top-nav-toggle" type="checkbox" />

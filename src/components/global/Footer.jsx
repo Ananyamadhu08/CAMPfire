@@ -8,7 +8,7 @@ export default function Footer() {
     <div>
       <footer
         className={`relative flex flex-col h-22 justify-center align-items-center w-full p-6 z-50 ${
-          theme === "light" ? "bg-slate-900" : "bg-orange-200"
+          theme === "light" ? "bg-slate-900" : "bg-orange-100"
         }`}
       >
         <div

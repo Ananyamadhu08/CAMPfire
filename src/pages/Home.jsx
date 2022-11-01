@@ -20,7 +20,7 @@ export default function Home() {
         <div className="m-6">
           <p
             className={`mb-14 text-7xl ${
-              theme === "light" ? "text-slate-900" : "text-orange-200"
+              theme === "light" ? "text-slate-900" : "text-orange-100"
             }`}
           >
             <span className="text-orange-500 text-8xl ">CAMP</span>
@@ -32,7 +32,7 @@ export default function Home() {
             className={`homepage-links cursor-pointer ${
               theme === "light"
                 ? "bg-slate-900 text-orange-100 bg-hover-slate-800"
-                : "bg-orange-200 text-slate-900 bg-hover-orange-400"
+                : "bg-orange-100 text-slate-900 bg-hover-orange-400"
             }  `}
             to="/tasks"
           >
