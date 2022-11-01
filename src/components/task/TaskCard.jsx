@@ -13,8 +13,8 @@ export const TaskCard = ({ task }) => {
       <div
         className={`rounded-2xl mb-4  p-5 ${
           theme === "light"
-            ? "bg-slate-900 text-orange-200"
-            : "bg-orange-200 text-slate-900"
+            ? "bg-slate-900 text-orange-100"
+            : "bg-orange-100 text-slate-900"
         }`}
       >
         <h3 className="task-card-title">{task.title}</h3>
@@ -29,8 +29,8 @@ export const TaskCard = ({ task }) => {
           <button
             className={`rounded-lg py-1 px-2 text-md no-border ${
               theme === "light"
-                ? "bg-orange-200 text-slate-900"
-                : "text-orange-200 bg-slate-900"
+                ? "bg-orange-100 text-slate-900"
+                : "text-orange-100 bg-slate-900"
             }`}
           >
             <Link to={`/tasks/${task._id}`}>Start Focusing</Link>

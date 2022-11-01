@@ -7,15 +7,15 @@ function TaskDetailsHeader({ title, description, setIsModalOpen }) {
     <div
       className={`task-info-box mb-5  ${
         theme === "light"
-          ? "bg-slate-900 text-orange-200"
-          : "text-slate-900 bg-orange-200"
+          ? "bg-slate-900 text-orange-100"
+          : "text-slate-900 bg-orange-100"
       }`}
     >
       <div className="flex mb-1 justify-between align-items-center">
         <h2 className="">{title}</h2>
         <button
           className={`btn-transparent cursor-pointer ${
-            theme === "light" ? "text-orange-200" : "text-slate-900"
+            theme === "light" ? "text-orange-100" : "text-slate-900"
           }`}
           onClick={() => setIsModalOpen(true)}
         >

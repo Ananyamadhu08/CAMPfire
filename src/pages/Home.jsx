@@ -31,7 +31,7 @@ export default function Home() {
           <Link
             className={`homepage-links cursor-pointer ${
               theme === "light"
-                ? "bg-slate-900 text-orange-200 bg-hover-slate-800"
+                ? "bg-slate-900 text-orange-100 bg-hover-slate-800"
                 : "bg-orange-200 text-slate-900 bg-hover-orange-400"
             }  `}
             to="/tasks"
