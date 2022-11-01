@@ -23,7 +23,7 @@ export default function Header() {
         </Link>
 
         <ul
-          className="links gap-10 text-2xl flex align-items-center justify-center"
+          className="links gap-6 text-2xl flex align-items-center justify-center"
           style={{ opacity: 1 }}
         >
           <li>
@@ -47,24 +47,11 @@ export default function Header() {
           </li>
           <li>
             <Link
-              className="text-orange-600 text-hover-orange-700 flex justify-center align-items-center "
+              className="text-orange-600 text-hover-orange-700 flex justify-center align-items-center text-3xl"
               to="/tasks"
             >
               <i className="fa-solid fa-list-check mr-2"></i>
-              Tasks
             </Link>
-          </li>
-
-          <li>
-            <a
-              className="text-orange-600 text-hover-orange-700 flex justify-center align-items-center"
-              href="https://github.com/Ananyamadhu08/fusion"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="fab fa-github mr-2"></i>
-              Github
-            </a>
           </li>
           <li>
             <button
