@@ -255,8 +255,8 @@ export default function CreateTaskForm({ task, setIsOpen }) {
             <h3 className="mb-5">COLOR</h3>
             <div className="flex gap-5">
               <div
-                className="bg-sky-blue w-16 h-16 rounded-full"
-                onClick={() => setPathColor("blue")}
+                className="bg-cyan w-16 h-16 rounded-full"
+                onClick={() => setPathColor("darkcyan")}
               ></div>
               <div
                 className="bg-purple w-16 h-16 rounded-full"
@@ -265,6 +265,14 @@ export default function CreateTaskForm({ task, setIsOpen }) {
               <div
                 className="bg-crimson w-16 h-16 rounded-full"
                 onClick={() => setPathColor("red")}
+              ></div>
+              <div
+                className="bg-green w-16 h-16 rounded-full"
+                onClick={() => setPathColor("green")}
+              ></div>
+              <div
+                className="bg-salmon w-16 h-16 rounded-full"
+                onClick={() => setPathColor("salmon")}
               ></div>
             </div>
           </div>
