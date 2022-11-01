@@ -15,7 +15,7 @@ export default function Tasks() {
           {!tasksState.tasks.length && (
             <h2
               className={` mb-7
-              ${theme === "light" ? "text-slate-900" : "text-orange-200"}`}
+              ${theme === "light" ? "text-slate-900" : "text-orange-100"}`}
             >
               PLEASE ADD A TASK TO START FOCUSING
             </h2>
@@ -25,8 +25,8 @@ export default function Tasks() {
             id="modal-btn"
             className={`p-4 cursor-pointer text-3xl task-btn m-auto text-center open-modal-btn no-border ${
               theme === "light"
-                ? "bg-slate-900 text-orange-200  bg-hover-slate-800"
-                : "bg-orange-200 text-slate-900  bg-hover-orange-400"
+                ? "bg-slate-900 text-orange-100  bg-hover-slate-800"
+                : "bg-orange-100 text-slate-900  bg-hover-orange-400"
             }`}
           >
             <i className="fa-solid fa-plus mr-4"></i>

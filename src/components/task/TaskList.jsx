@@ -11,13 +11,13 @@ export default function TaskList({ category }) {
     <div className="mt-7">
       <h3
         className={`text-center mb-10 pb-3 ${
-          theme === "light" ? "text-slate-900" : "text-orange-200"
+          theme === "light" ? "text-slate-900" : "text-orange-100"
         } `}
         style={{
           borderBottom: `${
             theme === "light"
               ? "4px dotted var(--slate-900)"
-              : "4px dotted var(--orange-200)"
+              : "4px dotted var(--orange-100)"
           }`,
         }}
       >

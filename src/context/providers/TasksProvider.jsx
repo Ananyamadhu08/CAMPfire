@@ -16,9 +16,7 @@ const initState = {
 export const TasksProvider = ({ children }) => {
   const [tasksState, tasksDispatch] = useReducer(tasksReducer, initState);
 
-  const [pathColor, setPathColor] = useState("blue");
-
-  // const [trailColor, setTrailColor] = useState("");
+  const [pathColor, setPathColor] = useState("darkcyan");
 
   useEffect(() => {
     localStorage.setItem("campFireTasks", JSON.stringify(tasksState.tasks));
@@ -31,8 +29,6 @@ export const TasksProvider = ({ children }) => {
         tasksDispatch,
         pathColor,
         setPathColor,
-        // trailColor,
-        // setTrailColor,
       }}
     >
       {children}

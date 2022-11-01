@@ -9,12 +9,12 @@ export default function TaskControls({ play, setPlay, setControlTab }) {
       className={`flex flex-wrap gap-3 p-3 rounded-3xl justify-around mb-3 ${
         theme === "light"
           ? "bg-slate-900 text-slate-900"
-          : "bg-orange-200 text-orange-200"
+          : "bg-orange-100 text-orange-100"
       }`}
     >
       <div
         className={`py-4 px-6 rounded-3xl cursor-pointer ${
-          theme === "light" ? "bg-orange-200" : "bg-slate-900"
+          theme === "light" ? "bg-orange-100" : "bg-slate-900"
         }`}
         onClick={() => {
           setControlTab("pomodoro");
@@ -28,7 +28,7 @@ export default function TaskControls({ play, setPlay, setControlTab }) {
 
       <div
         className={`py-4 px-6 rounded-3xl cursor-pointer ${
-          theme === "light" ? "bg-orange-200" : "bg-slate-900"
+          theme === "light" ? "bg-orange-100" : "bg-slate-900"
         }`}
         onClick={() => {
           setControlTab("short break");
@@ -42,7 +42,7 @@ export default function TaskControls({ play, setPlay, setControlTab }) {
 
       <div
         className={`py-4 px-6 rounded-3xl cursor-pointer ${
-          theme === "light" ? "bg-orange-200" : "bg-slate-900"
+          theme === "light" ? "bg-orange-100" : "bg-slate-900"
         }`}
         onClick={() => {
           setControlTab("long break");

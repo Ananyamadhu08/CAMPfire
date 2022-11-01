@@ -20,7 +20,7 @@ export default function Timer({ timer, time }) {
     <div className="timer" style={{ maxWidth: "22rem" }}>
       <div
         className={`timer-display p-5 ${
-          theme === "light" ? "bg-orange-200" : "bg-slate-900"
+          theme === "light" ? "bg-orange-100" : "bg-slate-900"
         }`}
       >
         <CircularProgressbarWithChildren
@@ -33,12 +33,12 @@ export default function Timer({ timer, time }) {
             pathTransitionDuration: 0.5,
             pathColor: `${pathColor}`,
             textSize: "30px",
-            trailColor: `${theme === "light" ? "#0f172a" : "#fed7aa"}`,
+            trailColor: `${theme === "light" ? "#0f172a" : "#ffedd5"}`,
           })}
         >
           <div
             className={`text-6xl ${
-              theme === "light" ? "text-slate-900" : "text-orange-200"
+              theme === "light" ? "text-slate-900" : "text-orange-100"
             }`}
           >
             {" "}

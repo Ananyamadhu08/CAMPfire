@@ -64,8 +64,8 @@ export default function TaskDetails() {
         <h3
           className={`mt-3 mb-5 px-5 py-2 rounded-lg text-xl ${
             theme === "light"
-              ? "bg-slate-900 text-orange-200"
-              : "bg-orange-200 text-slate-900"
+              ? "bg-slate-900 text-orange-100"
+              : "bg-orange-100 text-slate-900"
           }`}
         >
           {controlTab}
@@ -85,7 +85,7 @@ export default function TaskDetails() {
 
         <div
           className={`flex text-3xl mt-1 gap-4 ${
-            theme === "light" ? "text-slate-900" : "text-orange-200"
+            theme === "light" ? "text-slate-900" : "text-orange-100"
           } `}
         >
           {play ? (

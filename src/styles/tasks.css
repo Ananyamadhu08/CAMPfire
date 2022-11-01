@@ -27,8 +27,8 @@
   gap: 2rem;
 }
 
-.bg-sky-blue {
-  background-color: var(--blue);
+.bg-cyan {
+  background-color: var(--cyan);
 }
 
 .bg-purple {
@@ -37,6 +37,14 @@
 
 .bg-crimson {
   background-color: var(--red);
+}
+
+.bg-green {
+  background-color: var(--green);
+}
+
+.bg-salmon {
+  background-color: var(--salmon);
 }
 
 .task-info-box {

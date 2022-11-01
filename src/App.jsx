@@ -10,7 +10,7 @@ const App = () => {
   const { authenticated } = useAuth();
 
   return (
-    <div className={`${theme === "light" ? "bg-orange-200" : "bg-slate-900"}`}>
+    <div className={`${theme === "light" ? "bg-orange-100" : "bg-slate-900"}`}>
       <ToastContainer
         theme={theme === "light" ? "light" : "dark"}
         position="bottom-left"
