@@ -32,7 +32,7 @@ export default function Home() {
             className={`homepage-links cursor-pointer ${
               theme === "light"
                 ? "bg-slate-900 text-orange-100 bg-hover-slate-800"
-                : "bg-orange-100 text-slate-900 bg-hover-orange-400"
+                : "bg-orange-100 text-slate-900 bg-hover-orange-200"
             }  `}
             to="/tasks"
           >
